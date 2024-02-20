@@ -14,10 +14,13 @@ import {
   PublicKey,
 } from '@solana/web3.js';
 
-export const rpcUrl: string = 'https://xxx.xxx.xxx/'
+export const rpcUrl: string = 'https://api.mainnet-beta.solana.com/'
 export const rpcToken: string | undefined = undefined
 
-export const wallet = Keypair.fromSecretKey(Buffer.from('<YOUR_WALLET_SECRET_KEY>'))
+const secretKey = process.env.PRIVATE_KEY;
+const secretKeyBuffer = Buffer.from(secretKey, 'base64');
+export const wallet = Keypair.fromSecretKey(secretKeyBuffer);
+
 
 export const connection = new Connection('<YOUR_RPC_URL>');
 
